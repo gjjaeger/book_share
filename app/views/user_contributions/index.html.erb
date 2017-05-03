@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Stories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contributions.each do |sentence| %>
+      <tr>
+        <td><%= sentence.content %></td>
+        <td><%= sentence.user_id %></td>
+        <td><%= link_to 'Show', sentence_path(sentence) %></td>
+        <td><%= link_to 'Edit', edit_sentence_path(sentence) %></td>
+        <td><%= link_to 'Destroy', sentence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

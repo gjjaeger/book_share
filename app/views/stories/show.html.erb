@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="book-title title"><%= @story.name %></h1>
+  <h4 class="book-author"><%= @story.user.email %></h4>
+  <%= link_to 'Back', stories_path, class: "btn btn-primary back"%>
+  <%= link_to "Contribute", new_story_sentence_path(@story) , class: "btn btn-primary contribute" %>
+  <div class="story-content col-xs-12">
+    <% @confirmed.each do |sentence| %>
+      <%= render partial: 'votes/voter', locals: { sentence: sentence, story: @story } %>
+      <div class="row">
+        <div class="col-xs-9">
+          <%= sentence.content%>
+        </div>
+        <div class="col-xs-3">
+          <%= image_tag ("xkcd/#{sentence.image}"), class: "story-image"%>
+        </div>
+      </div>
+    <% end %>
+    <% @unconfirmed.each do |sentence| %>
+      <%= render partial: 'votes/voter', locals: { sentence: sentence, story: @story } %>
+      <div class="row">
+        <div class="col-xs-9">
+          <%= sentence.content%>
+        </div>
+        <div class="col-xs-3">
+          <%= image_tag ("xkcd/#{sentence.image}"), class: "story-image"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

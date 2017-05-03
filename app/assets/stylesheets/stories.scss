@@ -1,0 +1,109 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  font-family: 'Raleway', sans-serif;
+}
+.title{
+  text-align: center;
+}
+
+#bg {
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.background-image {
+  background: url("book.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height: 500px;
+  background-size: cover;
+}
+
+.home-title{
+  margin:0;
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 100px;
+  text-align: center;
+  line-height: 500px;
+  color: white;
+}
+
+.main-title{
+  text-align: center;
+  margin-top: 3%;
+  font-family: 'Raleway', sans-serif;
+}
+
+.sub-title{
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.add-story{
+  float:right;
+}
+
+.story-list{
+  list-style: none;
+}
+
+.story {
+  border: 1px solid black;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.book-author {
+  text-align: center;
+  font-style: italic;
+}
+
+.story-image {
+  width:100%;
+  height:100%;
+}
+
+.story-content{
+  background-color: grey;
+  border-radius: 20px;
+  max-height:200px;
+  overflow:auto;
+}
+
+.contribute{
+  float: right;
+}
+
+.back {
+  float: right;
+}
+
+.howimage {
+  width:100%;
+  border-radius: 5px;
+}
+
+.howtitle {
+  width: 100%;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.howtext{
+  width:100%;
+  text-align: left;
+}
+
+.instructions {
+  text-align: center;
+}
+
+.step {
+  text-align: center;
+}

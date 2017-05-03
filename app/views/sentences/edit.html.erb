@@ -1,0 +1,33 @@
+<h1>Editing Sentence</h1>
+
+<%= form_for [@sentence] do |f| %>
+  <% if @sentence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sentence.errors.count, "error") %> prohibited this sentence from being saved:</h2>
+
+      <ul>
+      <% @sentence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+
+  <%= f.hidden_field :story_id, :value => @sentence.story.id %>
+
+  <%= f.hidden_field :user_id, :value => @sentence.user.id %>
+
+  <%= f.hidden_field :image, :value => @sentence.image %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @sentence %> |
+<%= link_to 'Back', sentences_path %>

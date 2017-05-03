@@ -1,0 +1,19 @@
+<h1>New Sentence</h1>
+<div class="container">
+  <h1 class="book-title title"><%= @story.name %></h1>
+  <h4 class="book-author"><%= @story.user.email %></h4>
+  <%= link_to 'Back', stories_path, class: "btn btn-primary back"%>
+  <div class="story-content col-xs-12">
+    <% @confirmed.each do |sentence| %>
+      <div class="row">
+        <div class="col-xs-11">
+          <%= sentence.content%>
+        </div>
+        <div class="col-xs-1">
+          <%= image_tag(current_user.avatar.url(:thumb))%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render 'form', sentence: @sentence %>

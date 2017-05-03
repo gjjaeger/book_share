@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 class="main-title">All your stories</h1>
+  <div class="row">
+    <%= link_to 'New Story', new_story_path, class: "btn btn-primary add-story" %>
+  </div>
+
+  <ul class="story-list">
+    <% @stories.each do |story| %>
+      <li class ="story row">
+        <p class="col-xs-2"><%= story.name %></p>
+        <p class="col-xs-2"><%= story.user%></p>
+        <p class="col-xs-2"><%= link_to 'Read', story , class: "btn btn-primary"%></p>
+        <p class="col-xs-2"><%= link_to 'Edit', edit_story_path(story) %></p>
+        <p class="col-xs-2"><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p class="col-xs-2"><%= link_to "Contribute", new_story_sentence_path(story) , class: "btn btn-primary" %></p>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+  <br>
+
+
+</div>

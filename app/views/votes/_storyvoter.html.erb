@@ -1,0 +1,13 @@
+<div class="text-center col-xs-1">
+  <% if current_user %>
+    <div class="width: 100%"><%= link_to " ", story_up_vote_path(story), class: 'glyphicon glyphicon-chevron-up', method: :post, style: "margin-right: 0; margin-left: 0" %></div>
+  <% else %>
+    <div class="width: 100%"><%= link_to " ", new_user_session_path, class: 'glyphicon glyphicon-chevron-up', method: :post, style: "margin-right: 0; margin-left: 0" %></div>
+  <% end %>
+  <div class="width: 100%"><h3 style="margin-top: 0; margin-bottom: 0"><strong><%= story.points %></strong></h3></div>
+  <% if current_user %>
+    <div class="width: 100%"><%= link_to " ", story_down_vote_path(story), class: 'glyphicon glyphicon-chevron-down', method: :post, style: "margin-right: 0; margin-left: 0" %></div>
+  <% else %>
+    <div class="width: 100%"><%= link_to " ", new_user_session_path, class: 'glyphicon glyphicon-chevron-down', method: :post, style: "margin-right: 0; margin-left: 0" %></div>
+  <% end %>
+</div>
