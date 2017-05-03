@@ -1,6 +1,7 @@
 class Sentence < ApplicationRecord
   belongs_to :story
   belongs_to :user
+  validates :content, :presence => true
   has_many :votes, as: :voteable, dependent: :destroy
 
   def up_votes

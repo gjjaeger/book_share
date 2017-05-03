@@ -6,59 +6,63 @@
   <h1 class="main-title">Contribute to one of our most popular books</h1>
   <h2 class="sub-title">Or start writing a new book</h2>
   <div class="row">
-    <%= link_to 'New Story', new_story_path, class: "btn btn-primary add-story" %>
+    <%= link_to new_story_path, remote: true, :class => "btn btn-primary add-book" do%>
+    <span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span>
+    <%end%>
   </div>
 
   <ul class="story-list">
     <% @stories.each do |story| %>
       <li class ="story row">
         <%= render partial: 'votes/storyvoter', locals: { story: story } %>
-        <p class="col-xs-3"><%= story.name %></p>
-        <p class="col-xs-1"><%= image_tag(story.user.avatar.url(:thumb)) %></p>
-        <p class="col-xs-3"><%= story.user.username%></p>
-        <p class="col-xs-2"><%= link_to 'Read', story , class: "btn btn-primary"%></p>
-        <p class="col-xs-3"><%= link_to "Contribute", new_story_sentence_path(story) , class: "btn btn-primary" %></p>
+        <p class="col-xs-3 story-name"><%= story.name %></p>
+        <p class="col-xs-3 user-name"><%= story.user.email%></p>
+        <p class="col-xs-2 read-btn"><%= link_to story, :class => "btn btn-primary" do%>
+        <span class="btn-content">Read</span>
+        <%end%></p>
+        <p class="col-xs-2 contribute-btn"><%= link_to new_story_sentence_path(story) , :class=> "btn btn-primary" do%>
+        <span class="btn-content">Contribute</span>
+        <%end%></p>
+        <p class="col-xs-1"><%= image_tag(story.user.avatar.url(:thumb), :class=>"user-image") %></p>
       </li>
     <% end %>
   </ul>
 
   <div class="howitworks">
-    <div class="row">
+    <div class="col-xs-12">
       <h1 class="main-title">How it works</h1>
     </div>
-    <div class="row instructions">
-      <div class="col-xs-4 col-xs-offset-0">
-        <div class="col-xs-10 col-xs-offset-0">
-          <div class="row">
-            <%= image_tag("community.jpg", :class => "howimage") %>
-          </div>
-          <div class="row howtitle">
-            <h4>Anyone can start a new book</h4>
-          </div>
-          <div class="row howtext">
-            <p>You have a great book idea and have always wanted to publish a book? Start writing today and let others contribute to your success</p>
-          </div>
+    <div class="col-xs-12 instructions">
+      <div class="col-xs-4 step">
+        <div class="col-xs-12">
+          <%= image_tag("community.jpg", :class => "howimage") %>
+        </div>
+        <div class="col-xs-12 howtitle">
+          <h4>Start a new book</h4>
+        </div>
+        <div class="col-xs-12 howtext">
+          <p>You have a great book idea and have always wanted to publish a book? Start writing today and let talented authors from around the world contribute to your success</p>
         </div>
       </div>
       <div class="col-xs-4 col-xs-offset-0 step">
-        <div class="row">
+        <div class="col-xs-12">
           <%= image_tag("collaboration.jpg", :class => "howimage") %>
         </div>
-        <div class="row howtitle">
-          <h4>Anyone can contribute to an exisiting book</h4>
+        <div class="col-xs-12 howtitle">
+          <h4>Contribute to an exisiting book</h4>
         </div>
-        <div class="row howtext">
-          <p>After a new book is published, all users can now continue writing the next part of the book. Everyone votes on the submissions and the first contribution to receive more than 50 up votes, is added to the book. Users then compete for the next section of the book and so on...</p>
+        <div class="col-xs-12 howtext">
+          <p>After a new book is published, all users can now write the next part of the book. Everyone votes on the submissions and the first contribution to receive more than 50 up votes, is added to the book. Users then compete for the next section of the book and so on...</p>
         </div>
       </div>
       <div class="col-xs-4 col-xs-offset-0">
-        <div class="row">
+        <div class="col-xs-12">
           <%= image_tag("publish.jpg", :class => "howimage") %>
         </div>
-        <div class="row howtitle">
+        <div class="col-xs-12 howtitle">
           <h4>Book is published</h4>
         </div>
-        <div class="row howtext">
+        <div class="col-xs-12 howtext">
           <p>Once the book is published. Every contributor receives a free paper copy. Any profits from the sale of the book are split amongst all contributors.</p>
         </div>
       </div>
@@ -72,6 +76,6 @@
 
 
   <br>
-
+  <%= render 'dialog'%>
 
 </div>

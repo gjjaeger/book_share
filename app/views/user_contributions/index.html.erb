@@ -1,25 +1,31 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Stories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <h1 class="main-title">Your Contributions</h1>
+  <ul class="story-list">
     <% @contributions.each do |sentence| %>
-      <tr>
-        <td><%= sentence.content %></td>
-        <td><%= sentence.user_id %></td>
-        <td><%= link_to 'Show', sentence_path(sentence) %></td>
-        <td><%= link_to 'Edit', edit_sentence_path(sentence) %></td>
-        <td><%= link_to 'Destroy', sentence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <li class ="story row">
+        <p class="col-xs-3 sentence-status">
+          <% if sentence.confirmed %>
+            <span class="approved">Approved Contribution</span>
+          <%elsif sentence.confirmed == false%>
+            <span class="rejected">Rejected Contribution</span>
+          <%else%>
+            <span class="pending">Approval pending</span>
+          <% end %>
+        </p>
+        <p class="col-xs-2 sentence-story"><%= sentence.story.name%></p>
+        <p class="col-xs-2 show-btn"><%= link_to sentence_path(sentence), :class => "btn btn-primary" do%>
+        <span class="btn-content">Show</span>
+        <%end%></p>
+        <p class="col-xs-2 edit-btn"><%= link_to edit_sentence_path(sentence), :class => "btn btn-primary" do%>
+        <span class="btn-content">Edit</span>
+        <%end%></p>
+        <% if sentence.confirmed==nil || sentence.confirmed==false %>
+          <p class="col-xs-2 delete-btn"><%= link_to sentence, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-primary" do%>
+          <span class="btn-content">Delete</span>
+          <%end%></p>
+        <% end %>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>

@@ -35,7 +35,7 @@
 .main-title{
   text-align: center;
   margin-top: 3%;
-  font-family: 'Raleway', sans-serif;
+  margin-bottom: 3%;
 }
 
 .sub-title{
@@ -43,20 +43,67 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.add-story{
+.add-book{
   float:right;
+}
+
+.btn-content {
+  color:white;
+  font-size: 24px;
 }
 
 .story-list{
   list-style: none;
+  text-align: center;
+  padding: 0;
 }
 
 .story {
-  border: 1px solid black;
+  border: 1px solid #FAEAEA;
   border-radius: 4px;
   text-align: center;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-top:3%;
+  height:80px;
+  position: relative;
+}
+
+.user-image{
+  max-height: 78px;
+  max-width: 100%;
+  border: 1px solid #FAEAEA;
+  border-radius: 3px;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+
+.read-btn, .story-name, .user-name, .contribute-btn, .edit-btn, .show-btn, .delete-btn, .sentence-story, .sentence-status {
+  line-height: 80px;
+  font-size: 14px;
+  margin:0;
+}
+
+.approved {
+  color:green;
+}
+
+.rejected {
+  color:red;
+}
+
+.story-name{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.voter {
+  height: 78px;
+  line-height: 20px;
 }
 
 .book-author {
@@ -70,10 +117,11 @@
 }
 
 .story-content{
-  background-color: grey;
-  border-radius: 20px;
-  max-height:200px;
+  background-color: #F4F4F4;
+  border-radius: 10px;
+  height: 600px;
   overflow:auto;
+  border: 1px solid #FAEAEA;
 }
 
 .contribute{
@@ -84,12 +132,18 @@
   float: right;
 }
 
+.howitworks{
+  text-align: center;
+}
 .howimage {
   width:100%;
   border-radius: 5px;
+  text-align: center;
 }
 
 .howtitle {
+  padding-top: 2%;
+  padding-bottom: 2%;
   width: 100%;
   text-align: center;
   text-decoration: underline;
@@ -98,6 +152,7 @@
 .howtext{
   width:100%;
   text-align: left;
+
 }
 
 .instructions {
@@ -106,4 +161,13 @@
 
 .step {
   text-align: center;
+  padding:0;
+}
+
+.story:hover {
+  background-color: #F4F4F4;
+}
+
+.contribution {
+  height: 400px;
 }

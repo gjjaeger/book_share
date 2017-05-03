@@ -5,14 +5,15 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = Story.limit(5).order('rank IS NULL, rank desc')
+
   end
 
   # GET /stories/1
   # GET /stories/1.json
   def show
     @confirmed=@story.sentences.where(:confirmed => true).order('created_at')
-    @unconfirmed = @story.sentences.where(:confirmed => nil)
+    @unconfirmed = @story.sentences.where(:confirmed => nil).order('created_at')
   end
 
   # GET /stories/new

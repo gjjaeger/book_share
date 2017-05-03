@@ -1,19 +1,28 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-  <h1 class="main-title">All your stories</h1>
+  <h1 class="main-title">All your books</h1>
   <div class="row">
-    <%= link_to 'New Story', new_story_path, class: "btn btn-primary add-story" %>
+    <%= link_to new_story_path, :class => "btn btn-primary add-book" do%>
+    <span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span>
+    <%end%>
   </div>
 
   <ul class="story-list">
     <% @stories.each do |story| %>
       <li class ="story row">
-        <p class="col-xs-2"><%= story.name %></p>
-        <p class="col-xs-2"><%= story.user%></p>
-        <p class="col-xs-2"><%= link_to 'Read', story , class: "btn btn-primary"%></p>
-        <p class="col-xs-2"><%= link_to 'Edit', edit_story_path(story) %></p>
-        <p class="col-xs-2"><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-        <p class="col-xs-2"><%= link_to "Contribute", new_story_sentence_path(story) , class: "btn btn-primary" %></p>
+        <%= render partial: 'votes/storyvoter', locals: { story: story } %>
+        <p class="col-xs-3 story-name"><%= story.name %></p>
+        <p class="col-xs-2 user-name"><%= story.user.email%></p>
+        <p class="col-xs-2 read-btn"><%= link_to story, :class => "btn btn-primary" do%>
+        <span class="btn-content">Read</span>
+        <%end%></p>
+        <p class="col-xs-2 contribute-btn"><%= link_to new_story_sentence_path(story) , :class=> "btn btn-primary" do%>
+        <span class="btn-content">Contribute</span>
+        <%end%></p>
+        <p class="col-xs-1 edit-btn"><%= link_to edit_story_path(story), :class=> "btn btn-primary" do%>
+        <span class="btn-content">Edit</span>
+        <%end%></p>
+        <p class="col-xs-1"><%= image_tag(story.user.avatar.url(:thumb), :class=>"user-image") %></p>
       </li>
     <% end %>
   </ul>

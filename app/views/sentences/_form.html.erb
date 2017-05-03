@@ -14,7 +14,7 @@
 
   <div class="field form-group">
     <%= f.label :content %>
-    <%= f.text_field :content, class: "form-control input-lg"%>
+    <%= f.text_area :content, :class => "form-control contribution"%>
   </div>
 
   <%= f.hidden_field :story_id, :value => @story.id %>
@@ -23,6 +23,6 @@
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit Contribution", :class => "btn"%>
   </div>
 <% end %>

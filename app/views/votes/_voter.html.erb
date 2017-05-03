@@ -1,6 +1,6 @@
-<div class="text-center col-xs-2">
+<div class="text-center col-xs-1">
   <% if sentence.points > 0 %>
-    <div class="width: 100%"><h3 style="margin-top: 0; margin-bottom: 0"><strong>Paragraph added</strong></h3></div>
+    <div class="width: 100%"><h5 style="margin-top: 0; margin-bottom: 0"><strong>Confirmed</strong></h5></div>
   <% else %>
     <% if current_user %>
       <div class="width: 100%"><%= link_to " ", story_sentence_up_vote_path(story, sentence), class: 'glyphicon glyphicon-chevron-up', method: :post, style: "margin-right: 0; margin-left: 0" %></div>

@@ -19,7 +19,7 @@ class SentencesController < ApplicationController
     @sentence = Sentence.new
     @random=rand(10)
     @user = current_user.id
-    @confirmed=@story.sentences.where(:confirmed => true).order('created_at')
+    @confirmed=@story.sentences.where(:confirmed => true).order('updated_at')
   end
 
   # GET /sentences/1/edit

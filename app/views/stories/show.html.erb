@@ -2,8 +2,12 @@
 <div class="container">
   <h1 class="book-title title"><%= @story.name %></h1>
   <h4 class="book-author"><%= @story.user.email %></h4>
-  <%= link_to 'Back', stories_path, class: "btn btn-primary back"%>
-  <%= link_to "Contribute", new_story_sentence_path(@story) , class: "btn btn-primary contribute" %>
+  <%= link_to stories_path, :class=> "btn btn-primary back" do%>
+  <span class="btn-content">Back</span>
+  <%end%></p>
+  <%= link_to new_story_sentence_path(@story) , :class=> "btn btn-primary contribute" do%>
+  <span class="btn-content">Contribute</span>
+  <%end%></p>
   <div class="story-content col-xs-12">
     <% @confirmed.each do |sentence| %>
       <%= render partial: 'votes/voter', locals: { sentence: sentence, story: @story } %>
@@ -11,10 +15,11 @@
         <div class="col-xs-9">
           <%= sentence.content%>
         </div>
-        <div class="col-xs-3">
-          <%= image_tag ("xkcd/#{sentence.image}"), class: "story-image"%>
+        <div class="col-xs-1">
+          <%= image_tag(sentence.user.avatar.url(:thumb), :class=>"user-image") %>
         </div>
       </div>
+      <br>
     <% end %>
     <% @unconfirmed.each do |sentence| %>
       <%= render partial: 'votes/voter', locals: { sentence: sentence, story: @story } %>
@@ -22,10 +27,11 @@
         <div class="col-xs-9">
           <%= sentence.content%>
         </div>
-        <div class="col-xs-3">
-          <%= image_tag ("xkcd/#{sentence.image}"), class: "story-image"%>
+        <div class="col-xs-1">
+          <%= image_tag(sentence.user.avatar.url(:thumb), :class=>"user-image") %>
         </div>
       </div>
+      <br>
     <% end %>
   </div>
 
