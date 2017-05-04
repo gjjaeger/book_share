@@ -1,14 +1,20 @@
 <p id="notice"><%= notice %></p>
+<% if @stories.blank? %>
+  <h4>There are no books containing the term <%= params[:search] %>.</h4>
+<% end %>
 <div class = "background-image">
   <h1 class ="home-title">Collaborative Book writing</h1>
 </div>
 <div class="container">
   <h1 class="main-title">Contribute to one of our most popular books</h1>
-  <h2 class="sub-title">Or start writing a new book</h2>
+  <h2 class="sub-title">Or start writing your own</h2>
   <div class="row">
     <button class="btn btn-primary add-book"><span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span></button>
   </div>
-
+  <%= form_tag(stories_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Books" %>
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
   <ul class="story-list" id="stories">
     <%= render @stories %>
   </ul>

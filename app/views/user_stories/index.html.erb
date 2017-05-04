@@ -4,6 +4,9 @@
   <div class="row">
     <button class="btn btn-primary add-book"><span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span></button>
   </div>
+  <div class="row">
+    <span>*You are only able to delete books that don't have any contributions from other users</span>
+  </div>
 
   <ul class="story-list">
     <% @stories.each do |story| %>
@@ -11,7 +14,7 @@
         <%= render partial: 'votes/storyvoter', locals: { story: story } %>
         <p class="col-xs-3 story-name"><%= story.name %></p>
         <p class="col-xs-2 user-name"><%= story.user.email%></p>
-        <p class="col-xs-2 read-btn"><%= link_to story, :class => "btn btn-primary" do%>
+        <p class="col-xs-1 read-btn"><%= link_to story, :class => "btn btn-primary" do%>
         <span class="btn-content">Read</span>
         <%end%></p>
         <p class="col-xs-2 contribute-btn"><%= link_to new_story_sentence_path(story) , :class=> "btn btn-primary" do%>
@@ -20,7 +23,11 @@
         <p class="col-xs-1 edit-btn"><%= link_to edit_story_path(story), :class=> "btn btn-primary" do%>
         <span class="btn-content">Edit</span>
         <%end%></p>
-        <p class="col-xs-1"><%= image_tag(story.user.avatar.url(:thumb), :class=>"user-image") %></p>
+        <% if story.sentences.length<=1%>
+          <p class="col-xs-2 delete-btn"><%= link_to story, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" do%>
+          <span class="btn-content">Delete</span>
+          <%end%></p>
+        <% end %>
       </li>
     <% end %>
   </ul>

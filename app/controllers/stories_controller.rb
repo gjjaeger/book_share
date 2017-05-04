@@ -7,8 +7,15 @@ class StoriesController < ApplicationController
   def index
     @stories = Story.limit(5).order('rank IS NULL, rank desc')
     @story=Story.new
-    @user = current_user.id
+    if user_signed_in?
+      @user = current_user.id
+    end
     @sentence=Sentence.new
+    if params[:search]
+      @stories = Story.search(params[:search]).order("created_at DESC")
+    else
+      @recipes = Story.limit(5).order('rank IS NULL, rank desc')
+    end
   end
 
   # GET /stories/1

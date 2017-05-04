@@ -17,4 +17,7 @@ class Story < ApplicationRecord
     new_rank = points
     update_attribute(:rank, new_rank)
   end
+  def self.search(search)
+    where("name LIKE ? OR user LIKE ? OR name LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
 end
