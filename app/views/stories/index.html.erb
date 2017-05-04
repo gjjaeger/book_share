@@ -6,26 +6,11 @@
   <h1 class="main-title">Contribute to one of our most popular books</h1>
   <h2 class="sub-title">Or start writing a new book</h2>
   <div class="row">
-    <%= link_to new_story_path, remote: true, :class => "btn btn-primary add-book" do%>
-    <span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span>
-    <%end%>
+    <button class="btn btn-primary add-book"><span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span></button>
   </div>
 
-  <ul class="story-list">
-    <% @stories.each do |story| %>
-      <li class ="story row">
-        <%= render partial: 'votes/storyvoter', locals: { story: story } %>
-        <p class="col-xs-3 story-name"><%= story.name %></p>
-        <p class="col-xs-3 user-name"><%= story.user.email%></p>
-        <p class="col-xs-2 read-btn"><%= link_to story, :class => "btn btn-primary" do%>
-        <span class="btn-content">Read</span>
-        <%end%></p>
-        <p class="col-xs-2 contribute-btn"><%= link_to new_story_sentence_path(story) , :class=> "btn btn-primary" do%>
-        <span class="btn-content">Contribute</span>
-        <%end%></p>
-        <p class="col-xs-1"><%= image_tag(story.user.avatar.url(:thumb), :class=>"user-image") %></p>
-      </li>
-    <% end %>
+  <ul class="story-list" id="stories">
+    <%= render @stories %>
   </ul>
 
   <div class="howitworks">

@@ -58,6 +58,12 @@ class SentencesController < ApplicationController
     end
   end
 
+  def starter
+    @story=Story.find(params[:story_id])
+    @sentence=Sentence.new
+    @user=current_user.id
+  end
+
   # DELETE /sentences/1
   # DELETE /sentences/1.json
   def destroy

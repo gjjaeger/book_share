@@ -1,0 +1,7 @@
+<h1>Start writing your book before you publish it for others to contribute</h1>
+<div class="container">
+  <h1 class="book-title title"><%= @story.name %></h1>
+  <h4 class="book-author"><%= @story.user.email %></h4>
+  <%= link_to 'Back', stories_path, class: "btn btn-primary back"%>
+</div>
+<%= render 'starter-form', sentence: @sentence %>

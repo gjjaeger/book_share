@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :stories do
     post '/up-vote' => 'votes#up_vote', as: :up_vote
     post '/down-vote' => 'votes#down_vote', as: :down_vote
+    get '/starter' => 'sentences#starter', as: :starter
+    get '/description' => 'stories#description', as: :description
     resources :sentences do
       post '/up-vote' => 'votes#up_vote', as: :up_vote
       post '/down-vote' => 'votes#down_vote', as: :down_vote

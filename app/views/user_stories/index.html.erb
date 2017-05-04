@@ -2,9 +2,7 @@
 <div class="container">
   <h1 class="main-title">All your books</h1>
   <div class="row">
-    <%= link_to new_story_path, :class => "btn btn-primary add-book" do%>
-    <span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span>
-    <%end%>
+    <button class="btn btn-primary add-book"><span class ="btn-content">New Book <span class="glyphicon glyphicon-book"></span></span></button>
   </div>
 
   <ul class="story-list">
@@ -31,5 +29,5 @@
 
   <br>
 
-
+  <%= render '/stories/dialog'%>
 </div>

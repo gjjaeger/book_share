@@ -1,0 +1,12 @@
+<li class ="story row">
+  <%= render partial: 'votes/storyvoter', locals: { story: story } %>
+  <p class="col-xs-3 story-name"><%= story.name %></p>
+  <p class="col-xs-3 user-name"><%= story.user.email%></p>
+  <p class="col-xs-2 read-btn"><%= link_to story, :class => "btn btn-primary" do%>
+  <span class="btn-content">Read</span>
+  <%end%></p>
+  <p class="col-xs-2 contribute-btn"><%= link_to new_story_sentence_path(story) , :class=> "btn btn-primary" do%>
+  <span class="btn-content">Contribute</span>
+  <%end%></p>
+  <p class="col-xs-1"><%= image_tag(story.user.avatar.url(:thumb), :class=>"user-image") %></p>
+</li>

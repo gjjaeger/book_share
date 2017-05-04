@@ -6,7 +6,9 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
     @stories = Story.limit(5).order('rank IS NULL, rank desc')
-
+    @story=Story.new
+    @user = current_user.id
+    @sentence=Sentence.new
   end
 
   # GET /stories/1
@@ -24,6 +26,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+    @user = current_user.id
   end
 
   # POST /stories
@@ -33,11 +36,9 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
-        format.json { render :show, status: :created, location: @story }
+        format.html { redirect_to story_description_path(@story), notice: 'Book was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,7 +48,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
+        format.html { redirect_to story_starter_path(@story), notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit }
@@ -66,6 +67,11 @@ class StoriesController < ApplicationController
     end
   end
 
+  def description
+    @story=Story.find(params[:story_id])
+    @user=current_user.id
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
@@ -74,6 +80,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:name, :user_id)
+      params.require(:story).permit(:name, :description, :user_id)
     end
 end

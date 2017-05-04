@@ -2,30 +2,32 @@
 <div class="container">
   <h1 class="main-title">Your Contributions</h1>
   <ul class="story-list">
-    <% @contributions.each do |sentence| %>
-      <li class ="story row">
-        <p class="col-xs-3 sentence-status">
-          <% if sentence.confirmed %>
-            <span class="approved">Approved Contribution</span>
-          <%elsif sentence.confirmed == false%>
-            <span class="rejected">Rejected Contribution</span>
-          <%else%>
-            <span class="pending">Approval pending</span>
-          <% end %>
-        </p>
-        <p class="col-xs-2 sentence-story"><%= sentence.story.name%></p>
-        <p class="col-xs-2 show-btn"><%= link_to sentence_path(sentence), :class => "btn btn-primary" do%>
-        <span class="btn-content">Show</span>
-        <%end%></p>
-        <p class="col-xs-2 edit-btn"><%= link_to edit_sentence_path(sentence), :class => "btn btn-primary" do%>
-        <span class="btn-content">Edit</span>
-        <%end%></p>
-        <% if sentence.confirmed==nil || sentence.confirmed==false %>
-          <p class="col-xs-2 delete-btn"><%= link_to sentence, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-primary" do%>
-          <span class="btn-content">Delete</span>
+    <% if @contributions %>
+      <% @contributions.each do |sentence| %>
+        <li class ="story row">
+          <p class="col-xs-3 sentence-status">
+            <% if sentence.confirmed %>
+              <span class="approved">Approved Contribution</span>
+            <%elsif sentence.confirmed == false%>
+              <span class="rejected">Rejected Contribution</span>
+            <%else%>
+              <span class="pending">Pending Contribution</span>
+            <% end %>
+          </p>
+          <p class="col-xs-2 sentence-story"><%= sentence.story.name%></p>
+          <p class="col-xs-2 show-btn"><%= link_to sentence_path(sentence), :class => "btn btn-primary" do%>
+          <span class="btn-content">Show</span>
           <%end%></p>
-        <% end %>
-      </li>
+          <p class="col-xs-2 edit-btn"><%= link_to edit_sentence_path(sentence), :class => "btn btn-primary" do%>
+          <span class="btn-content">Edit</span>
+          <%end%></p>
+          <% if sentence.confirmed==nil || sentence.confirmed==false %>
+            <p class="col-xs-2 delete-btn"><%= link_to sentence, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" do%>
+            <span class="btn-content">Delete</span>
+            <%end%></p>
+          <% end %>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>

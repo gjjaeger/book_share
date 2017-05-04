@@ -1,3 +1,16 @@
+<script>
+$(document).ready(function() {
+  $('.add-book').click(function(){
+    $('#dialog').modal("show");
+  });
+
+  // Set focus to the first element
+  $('#dialog').on('shown.bs.modal', function () {
+      $('.first_input').focus()
+  })
+});
+
+</script>
 <div class="modal fade"
            id="dialog" tabindex="-1" role="dialog"
            aria-labelledby="myModalLabel"
@@ -11,9 +24,10 @@
                 data-dismiss="modal"
                 aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title"></h3>
+        <h3 class="modal-title"><i class='glyphicon glyphicon-plus'></i> Add New Book</h3>
       </div>
       <div class="modal-body">
+        <%= render '/stories/form' %>
       </div>
 
     </div><!-- /.modal-content -->

@@ -7,6 +7,8 @@ class UserStoriesController < ApplicationController
   def index
     user=current_user
     @stories = user.stories
+    @story=Story.new
+    @user=current_user.id
   end
 
   # GET /stories/1
@@ -16,6 +18,8 @@ class UserStoriesController < ApplicationController
 
   # GET /stories/new
   def new
+    @story=Story.new
+    @user=current_user.id
   end
 
   # GET /stories/1/edit
@@ -25,6 +29,7 @@ class UserStoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
+    @user=current_user.id
   end
 
   # PATCH/PUT /stories/1

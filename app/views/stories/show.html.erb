@@ -2,6 +2,8 @@
 <div class="container">
   <h1 class="book-title title"><%= @story.name %></h1>
   <h4 class="book-author"><%= @story.user.email %></h4>
+  <h4>Description:</h4>
+  <h4 class="book-description"><%= @story.description %></h4>
   <%= link_to stories_path, :class=> "btn btn-primary back" do%>
   <span class="btn-content">Back</span>
   <%end%></p>
