@@ -5,6 +5,10 @@
 *= require_self
 */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "devise_bootstrap_views";
+
 
 .round-image-50 {
   background-color: white;

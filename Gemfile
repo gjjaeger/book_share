@@ -12,6 +12,7 @@ source 'https://rubygems.org'
   gem 'bootstrap-sass'
   gem 'devise'
   gem 'paperclip', '~> 4.1'
+  gem 'devise-bootstrap-views'
 
 
   group :development, :test do

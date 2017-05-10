@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field .first_input">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="field">
+    <%= f.label :Title %>
+    <%= f.text_field :name, :class=>"form-control first_input" %>
   </div>
 
   <%= f.hidden_field :user_id, :value => @user %>
