@@ -13,6 +13,7 @@ source 'https://rubygems.org'
   gem 'devise'
   gem 'paperclip', '~> 4.1'
   gem 'devise-bootstrap-views'
+  gem 'jquery-turbolinks'
 
 
   group :development, :test do

@@ -12,6 +12,7 @@
 //
 //= require bootstrap-sprockets
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap.min
@@ -19,7 +20,7 @@
 //= require_tree .
 
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $(".dropdown-toggle").dropdown();
 });
 

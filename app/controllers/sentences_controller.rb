@@ -32,9 +32,11 @@ class SentencesController < ApplicationController
     @sentence = Sentence.new(sentence_params)
     @story = Story.find(params[:story_id])
 
-
     respond_to do |format|
       if @sentence.save
+        start = @story.sentences.first
+        start.confirmed=true
+        start.save
         format.html { redirect_to @story, notice: 'Sentence was successfully created.' }
         format.json { render :show, status: :created, location: @sentence }
       else
