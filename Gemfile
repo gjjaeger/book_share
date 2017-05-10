@@ -14,6 +14,7 @@ source 'https://rubygems.org'
   gem 'paperclip', '~> 4.1'
   gem 'devise-bootstrap-views'
   gem 'jquery-turbolinks'
+  gem 'ruby'
 
 
   group :development, :test do
