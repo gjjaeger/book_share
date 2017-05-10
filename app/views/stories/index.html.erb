@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% if @stories.blank? %>
+<% if params[:search] && @stories.blank? %>
   <h4>There are no books containing the term <%= params[:search] %>.</h4>
 <% end %>
 <div class = "background-image">
