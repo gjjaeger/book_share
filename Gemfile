@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.4'
 
   gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
   gem 'pg', '~> 0.18'
@@ -14,7 +15,6 @@ source 'https://rubygems.org'
   gem 'paperclip', '~> 4.1'
   gem 'devise-bootstrap-views'
   gem 'jquery-turbolinks'
-  gem 'ruby'
 
 
   group :development, :test do
